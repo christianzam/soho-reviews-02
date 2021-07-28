@@ -25,8 +25,13 @@
         <td><%= worker.rating %></td>
         <td><%= worker.user_id %></td>
         <td><%= link_to 'Show', worker %></td>
-        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# if current_user == restaurant.user %>
+        <% if policy(worker).edit? %>
+          <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+        <% end %>
+        <% if policy(worker).destroy? %>
+          <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +39,8 @@
 
 <br>
 
-<%= link_to 'New Worker', new_worker_path %>
+
+<% if policy(Worker).new? %>
+  <%= link_to 'New Worker', new_worker_path %>
+<% end %>
+

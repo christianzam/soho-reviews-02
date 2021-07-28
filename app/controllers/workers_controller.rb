@@ -3,7 +3,8 @@ class WorkersController < ApplicationController
 
   # GET /workers
   def index
-    @workers = Worker.all
+    # @workers = Worker.all
+    @workers = policy_scope(Worker).order(created_at: :desc)
   end
 
   # GET /workers/1
@@ -13,6 +14,7 @@ class WorkersController < ApplicationController
   # GET /workers/new
   def new
     @worker = Worker.new
+    authorize @worker
   end
 
   # GET /workers/1/edit
@@ -21,8 +23,9 @@ class WorkersController < ApplicationController
 
   # POST /workers
   def create
-    # @worker = Worker.new(worker_params)
-    @worker.user = current_user 
+    @worker = Worker.new(worker_params)
+    @worker.user = current_user
+    authorize @worker
 
     if @worker.save
       redirect_to @worker, notice: 'Worker was successfully created.'
@@ -47,13 +50,15 @@ class WorkersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_worker
-      @worker = Worker.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def worker_params
-      params.require(:worker).permit(:name, :address, :description, :price, :rating, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_worker
+    @worker = Worker.find(params[:id])
+    authorize @worker
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def worker_params
+    params.require(:worker).permit(:name, :address, :description, :price, :rating, :user_id)
+  end
 end
