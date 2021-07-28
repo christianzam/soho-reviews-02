@@ -21,7 +21,8 @@ class WorkersController < ApplicationController
 
   # POST /workers
   def create
-    @worker = Worker.new(worker_params)
+    # @worker = Worker.new(worker_params)
+    @worker.user = current_user 
 
     if @worker.save
       redirect_to @worker, notice: 'Worker was successfully created.'
