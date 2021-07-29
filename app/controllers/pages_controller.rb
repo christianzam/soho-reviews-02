@@ -3,4 +3,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def profile
+    #@a = Worker.where(name: 'papaya').first
+    # @a = Worker.first.name
+    # @a = Worker.all.find(1)
+  end
 end
