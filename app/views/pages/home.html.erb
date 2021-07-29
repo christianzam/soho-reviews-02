@@ -1,6 +1,9 @@
 <h1>Pages#home</h1>
-<p>app/views/pages/home.html.erb</p>
 
 <% if user_signed_in? %>
-  <span>HELLO: <%= current_user.email %></span>
+  <h3>Hello <%= current_user.username.capitalize %></h3>
+  <h4>Your username is: <%= current_user.username %></h4>
+  <h4>Your email is: <%= current_user.email %></h4>
+  <% else %>
+  <h3>Please Log in or Sign up</h3>
 <% end %>
