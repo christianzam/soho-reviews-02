@@ -1,42 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h1>ALL Workers</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>ALL Workers</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Rating</th>
+          <th>UserID</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Rating</th>
-      <th>UserID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @workers.each do |worker| %>
-      <tr>
-        <td><%= worker.name %></td>
-        <td><%= worker.address %></td>
-        <td><%= worker.description %></td>
-        <td><%= worker.price %></td>
-        <td><%= worker.rating %></td>
-        <td><%= worker.user_id %></td>
-        <td><%= link_to 'Show', worker %></td>
-        <%# if current_user == restaurant.user %>
-        <% if policy(worker).edit? %>
-          <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+      <tbody>
+        <% @workers.each do |worker| %>
+          <tr>
+            <td><%= worker.name %></td>
+            <td><%= worker.address %></td>
+            <td><%= worker.description %></td>
+            <td><%= worker.price %></td>
+            <td><%= worker.rating %></td>
+            <td><%= worker.user_id %></td>
+            <td><%= link_to 'Show', worker %></td>
+            <%# if current_user == restaurant.user %>
+            <% if policy(worker).edit? %>
+              <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+            <% end %>
+            <% if policy(worker).destroy? %>
+              <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
         <% end %>
-        <% if policy(worker).destroy? %>
-          <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      </tbody>
+    </table>
+  </div>
+</div>
 <br>
 
 
@@ -44,3 +46,37 @@
   <%= link_to 'New Worker', new_worker_path %>
 <% end %>
 
+
+
+<section class="dark">
+	<div class="container py-4">
+		<h1 class="h1 text-center" id="pageHeaderTitle">REVIEWS</h1>
+    <h2><% if policy(Worker).new? %><%= link_to 'New Worker', new_worker_path %><% end %></h2>
+    <% @workers.each do |worker| %>
+      <article class="postcard dark red">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" src="https://picsum.photos/501/500" alt="Image Title" />	
+        </a>
+        <div class="postcard__text">
+          <h1 class="postcard__title red"><a href="#"><%= worker.name %></a></h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-map-marker-alt mr-2"></i><%= worker.address %>
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt"><%= worker.description %></div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>£<%= worker.price %></li>
+            <li class="tag__item play red"><i class="fas fa-star mr-2"></i><%= worker.rating %></li>
+            <% if policy(worker).edit? %>
+              <li class="tag__item"><i class="fas fa-edit mr-2"></i><%= link_to 'Edit', edit_worker_path(worker) %></li>
+            <% end %>
+            <% if policy(worker).destroy? %>
+              <li class="tag__item"><i class="fas fa-trash-alt mr-2"></i><%= link_to 'DELETE', worker, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <% end %>
+          </ul>
+        </div>
+      </article>
+    <% end %>
+		

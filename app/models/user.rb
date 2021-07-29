@@ -1,14 +1,13 @@
 class User < ApplicationRecord
+  has_many :workers
   attr_writer :login
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, 
          :validatable, authentication_keys: [:login]
-
-  has_many :workers
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
