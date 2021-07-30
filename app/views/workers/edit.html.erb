@@ -1,6 +1,24 @@
-<h1>Editing Worker</h1>
+<h1>Edit Worker Profile</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="d-flex justify-content-end">
+        <p><%= link_to 'See Worker Profile', @worker, style:"color:white;" %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= render 'form', worker: @worker %>
 
-<%= link_to 'Show', @worker %> |
-<%= link_to 'Back', workers_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="d-flex justify-content-end">
+        <p><%= link_to '< Go Back', workers_path, style:"color:white;" %></p>
+      </div>
+    </div>
+  </div>
+</div>

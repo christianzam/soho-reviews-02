@@ -68,7 +68,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-dark " target="__blank" href="#">Edit</a>
+                       <button class="btn btn-dark"><%= link_to 'Edit', edit_user_registration_path, style: "color: white;" %></button>
                     </div>
                   </div>
                 </div>
@@ -79,3 +79,13 @@
 
         </div>
     </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="d-flex justify-content-end">
+        <p><%= link_to '< Go Back', workers_path, style:"color:white;" %></p>
+      </div>
+    </div>
+  </div>
+</div>

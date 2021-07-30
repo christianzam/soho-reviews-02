@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :workers
+  has_many :workers, dependent: :destroy
   attr_writer :login
 
   # Include default devise modules. Others available are:

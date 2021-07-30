@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-6">
       <%= simple_form_for(@worker) do |f| %>
       <%= f.error_notification %>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit %>
+        <%= f.button :submit, class:"btn btn-dark", style:"color:white;" %>
       </div>
     <% end %>
     </div>
