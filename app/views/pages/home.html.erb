@@ -1,13 +1,13 @@
 <section class="masthead" role="img" aria-label="Image Description" >
-  <% if user_signed_in? %>
-    <h1>Hello <%= current_user.username.capitalize %></h1>
-  <% else %>
-    <h1>
-      <%= link_to "Login", new_user_session_path, class: "banner-text" %>
-    </h1>
-    <hr>
-    <h1>
-      <%= link_to "Sign Up", new_user_registration_path, class: "banner-text" %>
-    </h1>
-  <% end %>
+  <div class="welcome-text">
+      <% if user_signed_in? %>
+        <h1>Hello <%= current_user.username.capitalize %></h1>
+      <% else %>
+      <div class="welcome-text-1200">
+        <h1>Welcome</h1>
+        <h3>to</h3>
+        <h2>SOHO reviews</h2>
+      </div>
+      <% end %>
+  </div>
 </section>

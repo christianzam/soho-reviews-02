@@ -11,34 +11,24 @@
   background-image: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 10%, rgb(0, 0, 0) 100%), url('./soho_pic.png');
 }
 
-.banner-text {
-  color: white;
-  text-decoration: none !important;
-  &:hover {
-    color: rgba(255, 255, 255, 0.521);
+.welcome-text {
+  background-color: rgba(0, 0, 0, 0.717);
+  padding: 1%;
+  border-radius: 2%;
+}
+
+@media screen and (min-width: 1200px){
+  .welcome-text {
+    position:relative;
+    bottom: 40%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1%;
+    border-radius: 2%;
   }
 }
 
-button {
-  background: #098191;
-  transition: background ease .25s;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  margin: 0;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-button:hover {
-  background: #63b6b8
-}
-button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
+@media screen and (min-width: 1200px){
+  .welcome-text-1200 {
+  display: none;
+  }
 }
