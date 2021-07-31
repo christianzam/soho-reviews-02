@@ -7,7 +7,8 @@
     <div class="d-flex justify-content-end mb-3"><button class="btn btn-dark"><% if policy(Worker).new? %><%= link_to 'Add Review', new_worker_path, style: "color: white;" %><% end %></button></div>
     <% @workers.each do |worker| %>
       <article class="postcard dark red">
-        <%=link_to image_tag("woman_pic.png", size: "300x300"), worker, class: "postcard__img" %>
+        <%= cl_image_tag worker.photo.key, class:"postcard__img" , size:"300x300" %> <!-- crop: :fill -->
+        <%#=link_to image_tag("woman_pic.png", size: "300x300"), worker, class: "postcard__img" %>
         <div class="postcard__text">
           <h1 class="postcard__title red"><%= link_to "#{worker.name}", worker %></h1>
           <div class="postcard__subtitle small">
