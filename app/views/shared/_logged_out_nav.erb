@@ -1,0 +1,12 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <%= link_to "CREATE ACCOUNT", new_user_registration_path, style:"color:white; font-size: 20px;" %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <div></div>
+      <% else %>
+        <div>SOHO REVIEWS</div> 
+      <% end %>
+    </ul>
+  </div>
+</div>

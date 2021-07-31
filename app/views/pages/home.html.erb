@@ -1,12 +1,15 @@
+<%= render 'shared/navbar'%>
 <section class="masthead" role="img" aria-label="Image Description" >
   <div class="welcome-text">
       <% if user_signed_in? %>
         <h1>Hello <%= current_user.username.capitalize %></h1>
       <% else %>
-      <div class="welcome-text-1200">
-        <h1>Welcome</h1>
-        <h3>to</h3>
-        <h2>SOHO reviews</h2>
+      <div class="container welcome-text-1200">
+        <h1>SOHO REVIEWS</h1>
+   <!-- <div class="d-flex justify-content-around">
+          <div> <%= link_to "Login", new_user_session_path, style:"color:white; font-size: 25px;" %> </div>
+          <div> <%= link_to "Sign Up", new_user_registration_path, style:"color:white; font-size: 25px;" %> </div>
+        </div> -->
       </div>
       <% end %>
   </div>
