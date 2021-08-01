@@ -8,7 +8,9 @@
     <% @workers.each do |worker| %>
       <article class="postcard dark red">
         <%#= cl_image_tag worker.photo.key, class:"postcard__img" , size:"280x300" %>
-        <%= link_to cl_image_tag(worker.photo.key, class:"postcard__img", size:"280x300"), worker %>
+        <% if worker.photo.attached? %>
+          <%= link_to cl_image_tag(worker.photo.key, class:"postcard__img", size:"280x300"), worker %>
+        <% end %>
         <div class="postcard__text">
           <h1 class="postcard__title red"><%= link_to "#{worker.name}", worker %></h1>
           <div class="postcard__subtitle small">
@@ -18,6 +20,7 @@
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt"><%= worker.description %></div>
+          <br>
           <div class="postcard__preview-txt"> <strong> This post was created by user:   </strong> <%= worker.user_id %> </div>
           <ul class="postcard__tagbox">
             <li class="tag__item"><i class="fas fa-tag mr-2"></i>£<%= worker.price %></li>
