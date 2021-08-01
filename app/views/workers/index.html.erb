@@ -9,7 +9,6 @@
       <article class="postcard dark red">
         <%#= cl_image_tag worker.photo.key, class:"postcard__img" , size:"280x300" %>
         <%= link_to cl_image_tag(worker.photo.key, class:"postcard__img", size:"280x300"), worker %>
-        <%#=link_to image_tag("woman_pic.png", size: "300x300"), worker, class: "postcard__img" %>
         <div class="postcard__text">
           <h1 class="postcard__title red"><%= link_to "#{worker.name}", worker %></h1>
           <div class="postcard__subtitle small">
